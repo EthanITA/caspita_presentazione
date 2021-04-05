@@ -1,6 +1,7 @@
 <template>
 
-    <b-carousel id="slide">
+    <b-carousel id="slide" has-drag="true" pause-hover="false" pause-info="false" arrow="false"
+                arrow-hover="false" indicator-style="is-lines">
 
         <b-carousel-item v-for="page in pages" class="columns has-text-centered">
             <div class="column is-one-third" v-for="row in page">
@@ -28,8 +29,7 @@
             Product,
         },
         mounted() {
-            axios.get("https://jsonblob.com/api/marcodong/caspita_srl/lucca/2c5152d6-9588-11eb-a275-d1a4d4e431b5").
-                then((response) =>{
+            axios.get("https://jsonblob.com/api/marcodong/caspita_srl/lucca/2c5152d6-9588-11eb-a275-d1a4d4e431b5").then((response) => {
                 this.pages = response.data;
                 console.log(this.pages[0])
             })

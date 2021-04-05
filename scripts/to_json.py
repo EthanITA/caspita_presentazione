@@ -51,14 +51,13 @@ def parse_to_dict(folder):
     image_ext_regex = "(png|jpg|jpeg)"
     product_name_regex = "[a-zA-Z0-9]+"
     separator = "[,]"
-    image_regex = f"{product_name_regex}(.)*{separator}(.)*{price_regex}[.][a-zA-Z0-9]*[.]{image_ext_regex}"
+    image_regex = f"{product_name_regex}(.)*{separator}(.)*{price_regex}[.]{image_ext_regex}"
 
     images = {}
     for file in sorted(os.listdir(folder)):
         namefile, extension = os.path.splitext(file)
         if os.path.isfile(os.path.join(folder, file)) and re.search(image_regex, file) is not None:
             name, price = namefile.strip().split(",")
-            price = ".".join(price.split(".")[:1])
             description_file = os.path.join(folder, f"{name}.txt")
             images[name] = {
                 "name": name,

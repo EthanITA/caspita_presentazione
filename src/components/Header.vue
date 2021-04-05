@@ -16,7 +16,7 @@
     <template #start>
 
       <b-navbar-item>
-        <div class="title is-1">
+        <div class="title is-1 is-uppercase">
           Offerte del giorno
         </div>
       </b-navbar-item>
@@ -69,7 +69,7 @@
   }
 
   .is-128x128-real {
-    width: 128px;
+    width: 256px;
     height: 128px;
   }
 </style>
