@@ -62,7 +62,7 @@ def parse_to_dict(folder):
             images[name] = {
                 "name": name,
                 "path": os.path.join("".join((namefile, extension))),
-                "price": float(price),
+                "price": '{:.2f}'.format(float(price)),
                 "description": " ".join(
                     map(str.strip, open(description_file).readlines())) if os.path.exists(description_file) else ""
             }

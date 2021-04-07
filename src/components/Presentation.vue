@@ -1,7 +1,7 @@
 <template>
 
-    <b-carousel id="slide" has-drag="true" pause-hover="false" pause-info="false" arrow="false"
-                arrow-hover="false" indicator-style="is-lines">
+    <b-carousel id="slide" :has-drag="true" :pause-hover="false" :pause-info="false" :arrow="false"
+                :arrow-hover="false" indicator-style="is-lines" :autoplay="false">
 
         <b-carousel-item v-for="page in pages" class="columns has-text-centered">
             <div class="column is-one-third" v-for="row in page">
