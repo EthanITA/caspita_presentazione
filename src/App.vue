@@ -1,9 +1,9 @@
 <template>
-  <div class="hero has-bg-img is-fullheight ">
-    <PresentationTitle class="hero-head "/>
-    <Presentation class="hero-body"
-                  style="padding: 0 1.5rem;"/>
-    <Footer class="hero-foot"/>
+  <div class="hero has-bg-img ">
+    <PresentationTitle class="hero-head"/>
+    <Presentation :interval="slide_autoplay_interval" class="hero-body"
+        style="padding: 0 1.5rem;"/>
+    <Footer :presentation_interval="slide_autoplay_interval" class="hero-foot"/>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      slide_autoplay_interval: 10
+    }
+  },
   components: {
     PresentationTitle,
     Presentation,
@@ -23,6 +28,10 @@ export default {
 </script>
 
 <style>
+.hero{
+  height: 100vh;
+  max-height: 100vh;
+}
 .has-bg-img {
   background: url("assets/img/background.svg") no-repeat center center fixed;
   -webkit-background-size: cover;
