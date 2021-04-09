@@ -69,8 +69,8 @@ export default {
   padding: 0;
 }
 
-  .is-128x128-real {
-    width: 256px;
-    height: 128px;
-  }
+.is-128x128-real {
+  width: 256px;
+  height: 128px;
+}
 </style>

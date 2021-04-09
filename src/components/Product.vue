@@ -74,10 +74,11 @@ export default {
   background-color: rgba(255, 234, 184, 0.6)
 }
 
-.product-name{
+.product-name {
   padding: 0 0 0.5rem 1rem;
   font-weight: bold;
 }
+
 img {
   max-width: 100%;
   height: 33vh;

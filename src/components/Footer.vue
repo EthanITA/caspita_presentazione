@@ -1,6 +1,5 @@
 <template>
   <div>
-    <
     <div v-if="presentation_interval!==0" style="padding: 0.1rem 1.5rem">
       <div class="w3-light-grey w3-round-xlarge">
         <div class="w3-container w3-blue w3-round-xlarge" :style="'width:' + percent + '%'">
@@ -38,21 +37,17 @@ export default {
         this.time_remaining -= this.interval_percent_ms / 1000
         this.percent = this.time_remaining / this.presentation_interval * 100
       }
+      else {
+        this.presentation_next_page()
+        this.time_remaining=this.presentation_interval
+      }
     },
-    reset_loading_bar() {
-
-      this.time_remaining = this.presentation_interval
-    }
+    presentation_next_page() {
+      this.$root.$emit('next_page')
+    },
   },
   created: function () {
-    this.$root.$refs.Footer = this;
     setInterval(this.loading, this.interval_percent_ms)
-  },
-  mounted: function () {
-    this.$root.$on('Footer', () => {
-      // your code goes here
-      this.reset_loading_bar()
-    })
   }
 };
 </script>

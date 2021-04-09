@@ -1,6 +1,6 @@
 <template>
-  <b-carousel id="slide" :pause-info="false" :arrow="false" :v-model="page"
-              :arrow-hover="false" @change="reset_loading()" :interval="interval*1000"
+  <b-carousel id="slide" :pause-info="false" :arrow="false" v-model="index_page"
+              :arrow-hover="false" :autoplay="false"
               style="width: 100%">
 
     <b-carousel-item v-for="page in pages" :key="random()" class="columns has-text-centered">
@@ -23,6 +23,7 @@ export default {
   name: 'Presentation',
   data() {
     return {
+      index_page: 0,
       pages: []
     }
   },
@@ -36,21 +37,22 @@ export default {
   },
   methods: {
     random() {
-      const api = "https://random.justyy.workers.dev/api/random/?cached&n=128"
-      axios.get(api).then(response => {
-        return response.data
-      }).catch(reason => {
-        console.log(reason)
-        return new Date().getTime()
-      })
+      return Math.random().toString(36).substring(7);
     },
-    reset_loading(){
-      this.$root.$emit('Footer')
+    next_page() {
+      this.index_page = (this.index_page + 1) % this.pages.length
+      console.log(this.index_page)
     }
   },
   mounted() {
     axios.get("https://jsonblob.com/api/marcodong/caspita_srl/lucca/2c5152d6-9588-11eb-a275-d1a4d4e431b5").then((response) => {
       this.pages = response.data;
+    }).catch((reason => {
+      console.error(reason)
+    }))
+    this.$root.$on('next_page', () => {
+      // your code goes here
+      this.next_page()
     })
 
   }
