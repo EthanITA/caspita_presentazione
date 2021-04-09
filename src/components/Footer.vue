@@ -36,18 +36,24 @@ export default {
       if (this.time_remaining > 0) {
         this.time_remaining -= this.interval_percent_ms / 1000
         this.percent = this.time_remaining / this.presentation_interval * 100
-      }
-      else {
+      } else {
         this.presentation_next_page()
-        this.time_remaining=this.presentation_interval
+        this.reset_loading_bar()
       }
     },
     presentation_next_page() {
       this.$root.$emit('next_page')
     },
+    reset_loading_bar(){
+      this.time_remaining=this.presentation_interval
+    }
   },
-  created: function () {
+  mounted() {
     setInterval(this.loading, this.interval_percent_ms)
+    this.$root.$on('reset_loading', () => {
+      // your code goes here
+      this.reset_loading_bar()
+    })
   }
 };
 </script>

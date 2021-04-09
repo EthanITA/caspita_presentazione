@@ -1,6 +1,6 @@
 <template>
   <b-carousel id="slide" :pause-info="false" :arrow="false" v-model="index_page"
-              :arrow-hover="false" :autoplay="false"
+              :arrow-hover="false" :autoplay="false" @change="reset_loading()"
               style="width: 100%">
 
     <b-carousel-item v-for="page in pages" :key="random()" class="columns has-text-centered">
@@ -42,6 +42,9 @@ export default {
     next_page() {
       this.index_page = (this.index_page + 1) % this.pages.length
       console.log(this.index_page)
+    },
+    reset_loading(){
+      this.$root.$emit('reset_loading')
     }
   },
   mounted() {
