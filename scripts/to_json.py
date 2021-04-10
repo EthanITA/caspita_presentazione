@@ -94,14 +94,14 @@ def solve(folder: str):
 
     n_products_excess = len(products_name) - 6 * len(result_array)
     n_products_to_fill = 6 - n_products_excess
-
-    if len(products_name) >= 6:
-        result_array.append(build_page(products_name[-n_products_excess:] + products_name[:n_products_to_fill],
-                                       dict_products))
-    else:
-        result_array.append(build_page(
-            products_name[-n_products_excess:] + [products_name[i % len(products_name)] for i in
-                                                  range(n_products_to_fill)], dict_products))
+    if n_products_excess > 0:
+        if len(products_name) >= 6:
+            result_array.append(build_page(products_name[-n_products_excess:] + products_name[:n_products_to_fill],
+                                           dict_products))
+        else:
+            result_array.append(build_page(
+                products_name[-n_products_excess:] + [products_name[i % len(products_name)] for i in
+                                                      range(n_products_to_fill)], dict_products))
 
     return json.dumps(result_array)
 
