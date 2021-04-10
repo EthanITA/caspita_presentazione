@@ -6,7 +6,7 @@
       <div class="subtitle is-capitalized is-5"
            style="position:absolute;z-index: 100;">
 
-        <div class=" subtitle is-bold is-2 box" style="background-color:rgba(255,115,0,0.7);
+        <div class="is-family-code	subtitle is-bold is-2 box is-underlined" style="background-color:rgba(255,115,0,0.7);
                 padding-top: 0;margin-left:5px;margin-top: 5px; -webkit-transform: rotate(5deg);
             ">
           {{ price }}€
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="card-footer product-name-box">
-      <div class="card-footer-item subtitle is-capitalized is-4 product-name">
+      <div class="card-footer-item subtitle is-family-sans-serif is-capitalized is-4 product-name">
         {{ name }}
       </div>
 
