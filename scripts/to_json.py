@@ -57,12 +57,14 @@ def parse_to_dict(folder):
     for file in os.listdir(folder):
         namefile, extension = os.path.splitext(file)
         if os.path.isfile(os.path.join(folder, file)) and re.search(image_regex, file) is not None:
-            name, price = namefile.strip().split(",")
+            name, price_text = namefile.strip().split(",")
+            price_match = re.search(price_regex, price_text)
+            price = price_text[price_match.start():price_match.end()]
             description_file = os.path.join(folder, f"{name}.txt")
             images[name] = {
                 "name": name,
                 "path": os.path.join("".join((namefile, extension))),
-                "price": '{:.2f}'.format(float(price)),
+                "price": '{}{:.2f}'.format(price_text[:price_match.start()], float(price)),
                 "description": " ".join(
                     map(str.strip, open(description_file).readlines())) if os.path.exists(description_file) else ""
             }
